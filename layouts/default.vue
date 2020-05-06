@@ -1,29 +1,63 @@
 <template>
-   <v-container grid-list-md text-xs-center>
-    <v-layout row wrap>
-      <v-flex class="split-box layout-flex left-box" md4 xs4>
-          
-      </v-flex>
-      <v-flex class="split-box layout-flex right-box" md8 xs8>
-          <nuxt />
-      </v-flex>
-    </v-layout>
-  </v-container>
+    <v-app>
+    <v-card class="overflow-hidden" flat>
+    <v-app-bar
+      absolute
+      color="white"
+      hide-on-scroll
+      scroll-target="#scrolling-techniques-7"
+    >
+
+      <v-toolbar-title><nuxt-link to="/" style="text-decoration: none; color:black !important">Charman</nuxt-link></v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon class="mr-3 ml-3" nuxt to="/cart">
+        <v-icon>mdi-cart</v-icon>
+      </v-btn>
+
+      <v-btn icon class="mr-3 ml-3" nuxt to="/login">
+        ログイン
+      </v-btn>
+
+      <v-btn icon class="mr-3 ml-3" nuxt to="/register">
+        会員登録
+      </v-btn>
+
+    </v-app-bar>
+    <v-sheet
+      id="scrolling-techniques-7"
+      class="overflow-y-auto"
+      max-height="100vh"
+    >
+        <v-content class="content-area" style="margin-top: 64px">
+            <v-container fluid>
+                <nuxt />
+            </v-container>
+        </v-content>
+        <v-row no-gutters justify="center">
+            <v-col cols="12">
+                <footerBar />
+            </v-col>
+        </v-row>
+        </v-sheet>
+  </v-card>
+    </v-app>
 </template>
 
 <script>
-// import splitMenu from '~/components/sideMenu/splitMenu.vue'
-// export default {
-//     components:{
-//         splitMenu
-//     }
-// }
+import footerBar from '~/components/footer/footerBar.vue'
+export default {
+    components:{
+        footerBar
+    }
+}
 </script>
 
 <style>
     html {
-    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-        Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: sans-serif,'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        Roboto, 'Helvetica Neue', Arial ;
     font-size: 16px;
     word-spacing: 1px;
     -ms-text-size-adjust: 100%;
@@ -44,34 +78,7 @@
         margin:0;
     }
 
-    .split-box{
-        position:absolute;
-        height:100%;
+    .content-area{
+        min-height:100vh;
     }
- 
-    .left-box {
-        left:0;
-        width:100%;
-    }
- 
-    .right-box {
-        right:0;
-        width: 100%;
-        overflow-y:scroll;
-    }
-
-    .layout-flex{
-      padding: 0 !important;
-      margin: 0 !important;
-      min-height: 100vh;
-    }
-
-    @media screen and (max-width:600px) { 
-	.split-box {
-		position:relative;
-		width:100%;
-		height:auto;
- 
-	}
-}
 </style>
